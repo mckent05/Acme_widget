@@ -30,3 +30,5 @@ test_products.each do |products|
   end
   p basket.total
 end
+
+6.778.floor

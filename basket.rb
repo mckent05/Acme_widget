@@ -26,6 +26,14 @@ class Basket
     discount = @offers.sum { |offer| offer.apply_offer(@cart_items) }
     discounted_total = cart_subtotal - discount
     delivery_fee = @delivery_charge_rules.delivery_rate(discounted_total)
-    "$#{(discounted_total + delivery_fee).round(2)}"
+
+    format_result(discounted_total + delivery_fee)
+  end
+
+  def format_result(total)
+    formatted_result = (total * 100).floor / 100.0
+    "$#{formatted_result}"
   end
 end
+
+

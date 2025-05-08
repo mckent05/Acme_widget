@@ -45,7 +45,7 @@ RSpec.describe Basket do
     it 'calculates the correct cost for R01, R01' do
       %w[R01 R01].each { |code| basket.add(code) }
 
-      expect(basket.total).to eq('$54.38')
+      expect(basket.total).to eq('$54.37')
     end
 
     it 'calculates the correct cost for R01, G01' do
@@ -57,7 +57,7 @@ RSpec.describe Basket do
     it 'calculates the correct cost for R01, R01, R01, B01, B01' do
       %w[R01 R01 R01 B01 B01].each { |code| basket.add(code) }
 
-      expect(basket.total).to eq('$98.28')
+      expect(basket.total).to eq('$98.27')
     end
   end
 end
