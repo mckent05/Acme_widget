@@ -8,7 +8,7 @@ class Offer
   def apply_offer(cart_items)
     cart_items_discount = 0
 
-    #check if the discount type matches
+    # check if the discount type matches
     if @discount_terms[:discount_type] == :buy_one_get_one_half_price
       product_code = @discount_terms[:product_code]
       items = cart_items.filter { |cart_item| cart_item.code == product_code }

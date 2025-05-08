@@ -23,7 +23,7 @@ class Basket
   end
 
   def total
-    cart_subtotal = @cart_items.sum(&:price) #calculate the sum of all items in the cart
+    cart_subtotal = @cart_items.sum(&:price) # calculate the sum of all items in the cart
 
     # get discount for the products that meet conditions for the offer
     discount = @offers.sum { |offer| offer.apply_offer(@cart_items) }
@@ -31,7 +31,7 @@ class Basket
     # calculate the discount before getting the delivery fee
     discounted_total = cart_subtotal - discount
 
-    #calculate delivery feebased on the discounted price
+    # calculate delivery feebased on the discounted price
     delivery_fee = @delivery_charge_rules.delivery_rate(discounted_total)
 
     format_result(discounted_total + delivery_fee)
@@ -42,5 +42,3 @@ class Basket
     "$#{formatted_result}"
   end
 end
-
-
