@@ -8,8 +8,8 @@ class Offer
     if @discount_terms[:discount_type] == :buy_one_get_one_half_price
       product_code = @discount_terms[:product_code]
       if product_code == "R01"
-        items = cart_items.filter { |cart_item| cart_item.product_code == product_code }
-        cart_items_discount = (items.count / 2 ) * (@discount_terms[:discount_rate] * items[0].price)
+        items = cart_items.filter { |cart_item| cart_item.code == product_code }
+        cart_items_discount = (items.count / 2 ) * (@discount_terms[:discount_rate].to_f * items[0].price)
       end
     end
   end
