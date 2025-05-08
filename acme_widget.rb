@@ -16,7 +16,17 @@ offer = [
               discount_rate: 0.5 })
 ]
 
-basket = Basket.new(product_catalogue, offer)
-basket.add('R01')
-basket.add('R01')
-p basket.total
+test_products = [
+  %w[B01 G01],
+  %w[R01 R01],
+  %w[R01 G01],
+  %w[B01 B01 R01 R01 R01]
+]
+
+test_products.each do |products|
+  basket = Basket.new(product_catalogue, offer)
+  products.each do |product|
+    basket.add(product)
+  end
+  p basket.total
+end
