@@ -15,6 +15,7 @@ class Basket
   end
 
   def add(product_code)
+    # raise error if product code is not a string
     raise ArgumentError, 'Product code must be a string' unless product_code.is_a?(String)
 
     product = @product_catalogue.find { |product_cat| product_cat.code == product_code }
@@ -22,9 +23,15 @@ class Basket
   end
 
   def total
-    cart_subtotal = @cart_items.sum(&:price)
+    cart_subtotal = @cart_items.sum(&:price) #calculate the sum of all items in the cart
+
+    # get discount for the products that meet conditions for the offer
     discount = @offers.sum { |offer| offer.apply_offer(@cart_items) }
+
+    # calculate the discount before getting the delivery fee
     discounted_total = cart_subtotal - discount
+
+    #calculate delivery feebased on the discounted price
     delivery_fee = @delivery_charge_rules.delivery_rate(discounted_total)
 
     format_result(discounted_total + delivery_fee)
