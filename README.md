@@ -1,40 +1,48 @@
 # Acme Widget 
 
-Overview
+## Overview <a name="overview"></a>
 
 This is a Ruby implementation of a proof-of-concept sales system for Acme Widget Co. The system is created to manage a shopping basket/cart containing a product catalog, delivery rules, and any special offers. Currently, the only offer considered is a "buy one red widget, get one red widget at half price".
 
-Features
+# 📗 Table of Contents
 
-Product Catalog: Supports 3 Products initiliazed with their names, product_codes and prices.
+- [📖 Project Overview](#overview)
+- [🛠 Features](#features)
+- [Assumptions](#assumptions)
+- [How to Run](#how-to-run)
+- [Future improvements](#future-improvements)
+- [📝 License](#license)
 
-Delivery Rules:
+## Features <a name="features"></a>
 
-Orders under $50: $4.95 delivery
-Orders $50-$89.99: $2.95 delivery
-Orders $90+: Free delivery
+### Product Catalog: Supports 3 Products initiliazed with their names, product_codes and prices.
 
-Special Offer: Buy one Red Widget (R01), get the second at half price.
+### Delivery Rules:
+- Orders under $50: $4.95 delivery
+- Orders $50-$89.99: $2.95 delivery
+- Orders $90+: Free delivery
 
-Basket Functionality:
+### Special Offer: Buy one Red Widget (R01), get the second at half price.
 
-I created a method to add products by product code.
+### Basket Functionality:
 
-I created a method to Cxalculate total cost including delivery and discounts.
+- I created a method to add products by product code.
 
-Implementation Details
+- I created a method to Cxalculate total cost including delivery and discounts.
+
+### Implementation Details
 
 I structured the solution into four main classes:
 
-Product: Represents a product with a name, code and price.
+- Product: Represents a product with a name, code and price.
 
-DeliveryCalculator: Computes delivery costs based on the basket subtotal after discounts.
+- DeliveryCalculator: Computes delivery costs based on the basket subtotal after discounts.
 
-Offer: Handles special offers/discounts, currently implementing the "buy one, get one half price" for R01.
+- Offer: Handles special offers/discounts, currently implementing the "buy one, get one half price" for R01.
 
-Basket: Manages the shopping basket, integrating the catalog, delivery rules, and offers.
+- Basket: Manages the shopping basket/cart-items, integrating the catalog, delivery rules, and offers.
 
-Key Design Choices
+## Key Design choices <a name="key-design-choices"></a>
 
 Modularity: Each component (Product, DeliveryCalculator, Offer, Basket) is encapsulated to allow easy extension.
 
@@ -44,7 +52,7 @@ Precision: Prices are handled as floats and rounded to 2 decimal places in the f
 
 Simplicity: The code is written to be clear and maintainable, with minimal dependencies.
 
-Assumptions
+## Assumptions <a name="assumptions"></a>
 
 Only valid products i.e products present in the catalogue can be added to the basket.
 
@@ -56,7 +64,7 @@ The "buy one, get one half price" offer applies to pairs of R01 widgets.
 
 Prices and discounts are in USD and include two decimal places.
 
-How to Run
+## How to Run <a name="how-to-run"></a>
 
 Please ensure Ruby is installed (version 3.0 or higher recommended).
 
@@ -76,7 +84,7 @@ R01, R01 => $54.37
 R01, G01 => $60.85
 B01, B01, R01, R01, R01 => $98.27
 
-Future Improvements
+## Future Improvements <a name="future-improvements"></a>
 
 Add input validation for product codes.
 
